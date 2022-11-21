@@ -1,7 +1,7 @@
 
 export { ChatHandler, chat_names}
 
-const chat_names = ["Utkarsh rai", "Utsav Kumar", "Arideep gupta", "Utkarsh Mallcik", "Senorita Singh", "Aviral Jha", "Shreya Rai"];
+const chat_names = ["Ravish Anand", "Abhishek Gaurav", "Jenny Rana", "Nitish Nehra", "Megha Mondal", "Satyam Kumar", "Amit Kumar"];
 const chat_names_length = chat_names.length;
 const chat_msg = ["Let's have some samosas at the Limbdi",
     "Can you please call me, it's urgent!",
@@ -38,9 +38,12 @@ class ChatHandler{
     }
 
     createNode(id){
+        //Creating node element
         let node = {};
+        //Pointers to prev and next
         node['next'] = null;
         node['prev'] = null;
+        //Create a copy of chat template
         let chat_item = this.chat_template.cloneNode(true);
         chat_item.querySelector('#Name').innerText = chat_names[id%chat_names_length];
         chat_item.querySelector('#Message').innerText = chat_msg[id%chat_msg_length];
@@ -52,10 +55,13 @@ class ChatHandler{
 
     newMsg(id){
         let node = null;
+        // if the message is not in the list. 
         if((id in this.hashmap ) === false){
             node = this.createNode(id);
             this.hashmap[id] = node;
-        } else{
+        }
+        //If the chat head were already in the list. 
+        else{
             node = this.getNodeFromList(id);
         }
 

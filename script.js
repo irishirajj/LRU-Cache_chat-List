@@ -11,7 +11,9 @@ onload = function () {
     const chat_item = templates.content.querySelector("li");
 
     const chatHandler = new ChatHandler(chat_item, chatlist);
-    let chats = [];
+    let chats = [];// to maintain which ids have a message in the chat array right now.
+
+    
 
     add.onclick = function () {
         if(Math.random()>0.75 && chats.length > 0){
